@@ -12,10 +12,12 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_buscararenas"
             android:title="Buscar Arenas" />
+<!--
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_cadastrararenas"
             android:title="Cadastrar Complexo Esportivo" />
+-->
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_paginadocliente"
