@@ -6,4 +6,5 @@
     <string name="nav_header_subtitle">footballhall@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configurações</string>
+    <string name="title_activity_maps">Buscar Arenas</string>
 </resources>
