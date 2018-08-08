@@ -45,6 +45,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.footballhall.footballhall.MainActivity" />
         </activity>
+        <activity
+            android:name=".CadCliente_Activity"
+            android:label="@string/title_activity_cad_cliente_"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.footballhall.footballhall.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
