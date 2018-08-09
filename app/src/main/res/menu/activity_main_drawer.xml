@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_paginadocliente"
-            android:title="Pagina Do Cliente" />
+            android:title="Meus Dados" />
     </group>
 
     <item android:title="Communicate">
