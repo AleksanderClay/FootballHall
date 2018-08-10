@@ -28,4 +28,8 @@ public class CadCliente_Activity extends AppCompatActivity {
         edtTelefone = (EditText)findViewById(R.id.edtTelefone);
 
     }
+
+    public void Salvar(View view) {
+
+    }
 }
