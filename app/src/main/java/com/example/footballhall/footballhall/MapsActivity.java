@@ -1,6 +1,8 @@
 package com.example.footballhall.footballhall;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -17,6 +19,7 @@ import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -60,6 +63,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .position(new LatLng(-1.4641926,-48.5005281)).title("Sabino Futebol Society")
                 .icon(bitmapDescriptorFromVector(this, R.drawable.ic_menu_quadras)));
 
+
+        /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                new AlertDialog.Builder(getBaseContext())
+                        .setTitle("Agendamento")
+                        .setMessage("Quer agenda esta Quadra?")
+                        .setPositiveButton("sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+
+                            }
+                        })
+                        .setNegativeButton("não", null)
+                        .show();
+
+                return true;
+            }
+        });*/
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(belem, 14.5f));
     }
