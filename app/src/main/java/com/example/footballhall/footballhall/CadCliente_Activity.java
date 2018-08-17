@@ -30,6 +30,6 @@ public class CadCliente_Activity extends AppCompatActivity {
     }
 
     public void Salvar(View view) {
-
+        
     }
 }

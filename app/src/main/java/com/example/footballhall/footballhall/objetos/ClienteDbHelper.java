@@ -1,16 +1,14 @@
 package com.example.footballhall.footballhall.objetos;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.naming.Context;
-
-import sun.rmi.runtime.Log;
 
 public class ClienteDbHelper extends SQLiteOpenHelper {
 
@@ -42,6 +40,7 @@ public class ClienteDbHelper extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
+            values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_IDCLIENTE, cliente.getId());
             values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME, cliente.getNome());
             values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO, cliente.getEndereco());
             values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL, cliente.getEmail());
@@ -88,10 +87,11 @@ public class ClienteDbHelper extends SQLiteOpenHelper {
             List<Cliente> clientes = new ArrayList<>();
             while (cursor.moveToNext()) {
                 clientes.add(new Cliente(
-                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME)),
-                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO)),
-                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL)),
-                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_TELEFONE)),
+                        cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda._ID)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL)),
+                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_TELEFONE))
                 ));
             }
             cursor.close();

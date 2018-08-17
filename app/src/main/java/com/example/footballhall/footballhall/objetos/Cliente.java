@@ -2,19 +2,29 @@ package com.example.footballhall.footballhall.objetos;
 
 public class Cliente {
 
+    public int id;
     public String nome;
     public String endereco;
     public String email;
     public int telefone;
 
-    public Cliente(){
+    public Cliente(String string, String cursorString, String s, int anInt){
     }
 
-    public Cliente(String nome, String endereco, String email, int telefone) {
+    public Cliente(int id, String nome, String endereco, String email, int telefone) {
+        this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
