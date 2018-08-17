@@ -87,7 +87,7 @@ public class ClienteDbHelper extends SQLiteOpenHelper {
             List<Cliente> clientes = new ArrayList<>();
             while (cursor.moveToNext()) {
                 clientes.add(new Cliente(
-                        cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda._ID)),
+                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente._ID)),
                         cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME)),
                         cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO)),
                         cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL)),

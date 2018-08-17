@@ -5,7 +5,7 @@ import android.provider.BaseColumns;
 public class ContratoCliente {
 
     public static final String SQL_CREAT_CLIENTE =
-            "CREAT TABLE " + TabelaCliente.TABLE_NAME + " (" +
+            "CREATe TABLE " + TabelaCliente.TABLE_NAME + " (" +
                     TabelaCliente._ID + " INTEGER PRIMARY KEY," +
                     TabelaCliente.COLUMN_NAME_NOME + " TEXT," +
                     TabelaCliente.COLUMN_NAME_ENDERECO + " TEXT," +
