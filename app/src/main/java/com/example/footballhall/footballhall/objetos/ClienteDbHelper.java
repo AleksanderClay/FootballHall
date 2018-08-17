@@ -40,7 +40,6 @@ public class ClienteDbHelper extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_IDCLIENTE, cliente.getId());
             values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME, cliente.getNome());
             values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO, cliente.getEndereco());
             values.put(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL, cliente.getEmail());
