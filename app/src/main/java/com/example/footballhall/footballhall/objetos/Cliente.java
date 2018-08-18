@@ -1,17 +1,16 @@
 package com.example.footballhall.footballhall.objetos;
 
+import android.widget.EditText;
+
 public class Cliente {
 
     public int id;
     public String nome;
     public String endereco;
     public String email;
-    public int telefone;
+    public String telefone;
 
-    public Cliente(String string, String cursorString, String s, int anInt){
-    }
-
-    public Cliente(int id, String nome, String endereco, String email, int telefone) {
+    public Cliente(int id, String nome, String endereco, String email,String telefone) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
@@ -51,11 +50,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }

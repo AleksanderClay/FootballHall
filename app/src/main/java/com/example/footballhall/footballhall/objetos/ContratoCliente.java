@@ -10,7 +10,7 @@ public class ContratoCliente {
                     TabelaCliente.COLUMN_NAME_NOME + " TEXT," +
                     TabelaCliente.COLUMN_NAME_ENDERECO + " TEXT," +
                     TabelaCliente.COLUMN_NAME_EMAIL + " TEXT," +
-                    TabelaCliente.COLUMN_NAME_TELEFONE +" INTEGER)";
+                    TabelaCliente.COLUMN_NAME_TELEFONE +" TEXT  )";
 
     public static final String SQL_DELETE_CLIENTE =
             "DROP TABLE IF EXISTS " + TabelaCliente.TABLE_NAME;

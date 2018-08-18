@@ -8,8 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.footballhall.footballhall.objetos.Cliente;
+import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
+
 public class CadCliente_Activity extends AppCompatActivity {
 
+    private EditText id;
     private EditText edtNome;
     private EditText edtEndereco;
     private EditText edtEmail;
@@ -29,7 +33,20 @@ public class CadCliente_Activity extends AppCompatActivity {
 
     }
 
+
     public void Salvar(View view) {
 
+        Cliente cliente = new Cliente(
+                1,
+                edtNome.getText().toString(),
+                edtEndereco.getText().toString(),
+                edtEmail.getText().toString(),
+                edtTelefone.getText().toString()
+        );
+
+        ClienteDbHelper clienteDbHelper = new ClienteDbHelper(this);
+        clienteDbHelper.Salvar(cliente);
+
+        finish();
     }
 }

@@ -90,7 +90,7 @@ public class ClienteDbHelper extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME)),
                         cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO)),
                         cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL)),
-                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_TELEFONE))
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_TELEFONE))
                 ));
             }
             cursor.close();
