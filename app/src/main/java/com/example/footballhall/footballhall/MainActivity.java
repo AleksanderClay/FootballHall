@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.footballhall.footballhall.objetos.Agenda;
+import com.example.footballhall.footballhall.objetos.Cliente;
+import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
