@@ -96,4 +96,8 @@ public class MainActivity extends AppCompatActivity
         return true;
 
     }
+
+    public void QuadraVindi(View view) {
+
+    }
 }

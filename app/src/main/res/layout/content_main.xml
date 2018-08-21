@@ -35,7 +35,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imagem_vindi" />
+        app:srcCompat="@drawable/imagem_vindi"
+        android:onClick="QuadraVindi"/>
 
     <ImageView
         android:id="@+id/imageView4"
