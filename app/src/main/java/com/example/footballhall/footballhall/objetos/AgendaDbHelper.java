@@ -35,14 +35,16 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public boolean Salvar(Agenda agenda) {
+    public boolean Agendar(Agenda agenda) {
         try {
             SQLiteDatabase db = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_IDCLIENTE, agenda.getIdCliente());
-            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_QUANTIDADEQUADRAS, agenda.getQuantidadeQuadras());
-            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_DIAHORARIO, new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").format(agenda.getDiaHorario()));
+            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_NOME, agenda.getNome());
+            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_TELEFONE, agenda.getTel());
+            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_ARENA, agenda.getArena());
+            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_DATA, new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").format(agenda.getData()));
+            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_HORA, new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").format(agenda.getHora()));
 
             String[] args = {Integer.toString(agenda.getId())};
 
@@ -52,7 +54,7 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
                 return db.insert(ContratoAgenda.TabelaAgenda.TABLE_NAME, null, values) > 0;
             }
         } catch (Exception e) {
-            Log.e("AgendaDbHelper", "Erro no Salvar, " + e.getMessage());
+            Log.e("AgendaDbHelper", "Erro no Agendar, " + e.getMessage());
             throw e;
         }
     }
@@ -86,9 +88,11 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 agendas.add(new Agenda(
                         cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda._ID)),
-                        cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_IDCLIENTE)),
-                        cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_QUANTIDADEQUADRAS)),
-                        new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").parse(cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_DIAHORARIO)))
+                        cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_NOME)),
+                        cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_TELEFONE)),
+                        cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_ARENA)),
+                        new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS").parse(cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_DATA))),
+                        new SimpleDateFormat("HH:MM").parse(cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_HORA)))
                 ));
             }
             cursor.close();

@@ -51,6 +51,15 @@
                 android:value="com.example.footballhall.footballhall.MainActivity" />
         </activity>
         <activity
+            android:name=".CadAgenda_Activity"
+            android:label="Agendar horário"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.footballhall.footballhall.MainActivity" />
+        </activity>
+        <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppCompat.TelaCheia">
             <intent-filter>

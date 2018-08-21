@@ -6,19 +6,21 @@ import java.util.Date;
 public class Agenda {
 
     public int id;
-    public int idCliente;
-    public int quantidadeQuadras;
-    public Date diaHorario;
+    public String nome;
+    public int tel;
+    public String arena;
+    public Date data;
+    public Date hora;
 
-    public Agenda() {
-    }
-
-    public Agenda(int id, int idCliente, int quantidadeQuadras, Date diaHorario) {
+    public Agenda(int id, String nome, int tel, String arena, Date data, Date hora) {
         this.id = id;
-        this.idCliente = idCliente;
-        this.quantidadeQuadras = quantidadeQuadras;
-        this.diaHorario = diaHorario;
+        this.nome = nome;
+        this.tel = tel;
+        this.arena = arena;
+        this.data = data;
+        this.hora = hora;
     }
+
 
     public int getId() {
         return id;
@@ -28,27 +30,42 @@ public class Agenda {
         this.id = id;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public int getQuantidadeQuadras() {
-        return quantidadeQuadras;
+    public int getTel() {
+        return tel;
     }
 
-    public void setQuantidadeQuadras(int quantidadeQuadras) {
-        this.quantidadeQuadras = quantidadeQuadras;
+    public void setTel(int tel) {
+        this.tel = tel;
+    }
+    public String getArena() {
+        return arena;
     }
 
-    public Date getDiaHorario() {
-        return diaHorario;
+    public void setArena(String arena) {
+        this.arena = arena;
     }
 
-    public void setDiaHorario(Date diaHorario) {
-        this.diaHorario = diaHorario;
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public Date getHora() {
+        return hora;
+    }
+
+    public void setHora(Date hora) {
+        this.hora = hora;
     }
 }
