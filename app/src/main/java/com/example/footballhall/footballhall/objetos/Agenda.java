@@ -6,16 +6,14 @@ import java.util.Date;
 public class Agenda {
 
     public int id;
-    public String nome;
-    public int tel;
+    public int idCliente;
     public String arena;
     public Date data;
     public Date hora;
 
-    public Agenda(int id, String nome, int tel, String arena, Date data, Date hora) {
+    public Agenda(int id, int idCliente, String arena, Date data, Date hora) {
         this.id = id;
-        this.nome = nome;
-        this.tel = tel;
+        this.idCliente = idCliente;
         this.arena = arena;
         this.data = data;
         this.hora = hora;
@@ -30,21 +28,14 @@ public class Agenda {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public int getTel() {
-        return tel;
-    }
-
-    public void setTel(int tel) {
-        this.tel = tel;
-    }
     public String getArena() {
         return arena;
     }

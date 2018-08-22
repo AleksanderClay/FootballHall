@@ -1,6 +1,7 @@
 package com.example.footballhall.footballhall;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,24 +12,26 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
 
 import com.example.footballhall.footballhall.objetos.Agenda;
 import com.example.footballhall.footballhall.objetos.AgendaDbHelper;
+import com.example.footballhall.footballhall.objetos.Cliente;
+import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
+import com.google.android.gms.common.api.Api;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CadAgenda_Activity extends AppCompatActivity  {
-
     private EditText editNome;
     private EditText editTel;
     private Spinner spinner_Arena;
     private EditText editData;
     private EditText editHora;
-    private Button button_Agendar;
-    private Button button_Cancelar;
+
     Agenda objAgenda;
 
     @Override
@@ -38,25 +41,27 @@ public class CadAgenda_Activity extends AppCompatActivity  {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        editNome = (EditText) findViewById(R.id.editNome);
-        editTel = (EditText) findViewById(R.id.editTel);
-        editData = (EditText) findViewById(R.id.editData);
-        editHora = (EditText) findViewById(R.id.editHora);
-        spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
-
         try {
-        objAgenda = (Agenda) getIntent().getExtras().getSerializable("objAgenda");
-        editNome.setText(objAgenda.getNome());
-        editTel.setText(objAgenda.getTel());
-        spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-        editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
-        editHora.setText(new SimpleDateFormat("hh:mm").format(objAgenda.getHora()));
+            Cliente cliente = new ClienteDbHelper(this).ConsultarCliente();
+            if (cliente.id == 0) {
+                startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
+            } else {
+                editNome = (EditText) findViewById(R.id.editNome);
+                editTel = (EditText) findViewById(R.id.editTel);
+                editData = (EditText) findViewById(R.id.editData);
+                editHora = (EditText) findViewById(R.id.editHora);
+                spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
 
-        } catch (Exception e){
-            Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
-            Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
-        }
+                editNome.setText(cliente.nome);
+                editTel.setText(cliente.telefone);
+                spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+                editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
+                editHora.setText(new SimpleDateFormat("hh:mm").format(objAgenda.getHora()));
 
+            }} catch(Exception e){
+                Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
+                Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
+            }
         }
 
 
@@ -87,12 +92,12 @@ public class CadAgenda_Activity extends AppCompatActivity  {
 
     public void Agendar(View view) {
         try {
-            if (editData.getText().toString().isEmpty()){
+            if (editData.getText().toString().isEmpty()) {
                 editData.setError("Entre com uma data!");
 
                 return;
             }
-            if (editHora.getText().toString().isEmpty()){
+            if (editHora.getText().toString().isEmpty()) {
                 editHora.setError("Informe a hora desejada!");
 
                 return;
@@ -100,15 +105,12 @@ public class CadAgenda_Activity extends AppCompatActivity  {
 
             int id = 0;
 
-            if (objAgenda != null){
+            if (objAgenda != null) {
                 id = objAgenda.getId();
             }
-
-            Agenda agenda = new Agenda(
-                    id,
-                    editNome.getText().toString(),
-                    - Integer.parseInt(editTel.getText().toString()),
-                    spinner_Arena.toString(),
+            Agenda agenda = new Agenda(1,
+                    1,
+                    spinner_Arena.getOnItemSelectedListener().toString(),
                     new SimpleDateFormat("dd-MM-yyyy").parse(editData.getText().toString()),
                     new SimpleDateFormat("hh:mm").parse(editHora.getText().toString())
             );
@@ -116,31 +118,16 @@ public class CadAgenda_Activity extends AppCompatActivity  {
             AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);
             agendaDbHelper.Agendar(agenda);
 
-
             finish();
-
-        } catch (Exception e){
+            Toast.makeText(this, "Agendamento Salvo com sucesso!", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
             Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
             Log.e("Agenda", "Agendar: " + e.getMessage());
         }
     }
-
-   public void addListenerOnButton() {
-
-        spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
-
-        button_Agendar.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(CadAgenda_Activity.this,
-                        "OnClickListener : " +
-                                "\nSpinner : " + String.valueOf(spinner_Arena.getSelectedItem()) ,
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        public void Cancelar(View view) {
+            startActivity(new Intent(getBaseContext(), MainActivity.class));
+        }
     }
 
-}
 
