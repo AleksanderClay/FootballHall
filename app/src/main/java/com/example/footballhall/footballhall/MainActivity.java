@@ -106,6 +106,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void QuadraVindi(View view) {
+        startActivity(new Intent(getBaseContext(), CadAgenda_Activity.class));
+    }
+
+    public void QuadraSabino(View view) {
+        startActivity(new Intent(getBaseContext(), CadAgenda_Activity.class));
+
+    }
+
+    public void QuadraSenac(View view) {
+        startActivity(new Intent(getBaseContext(), CadAgenda_Activity.class));
 
     }
 }

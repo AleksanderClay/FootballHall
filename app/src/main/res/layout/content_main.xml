@@ -50,7 +50,8 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/imagem_sabino" />
+        app:srcCompat="@drawable/imagem_sabino"
+        android:onClick="QuadraSabino"/>
 
     <ImageView
         android:id="@+id/imageView5"
@@ -64,6 +65,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/imagem_senac" />
+        app:srcCompat="@drawable/imagem_senac"
+        android:onClick="QuadraSenac"/>
 
 </android.support.constraint.ConstraintLayout>
