@@ -106,7 +106,6 @@
     <string name="title_menu_cancelar">Cancelar</string>
     <string name="action_ok">OK</string>
 
-
     <string name="country_prompt">Selecionar Arena</string>
 
     <string-array name="country_arrays">

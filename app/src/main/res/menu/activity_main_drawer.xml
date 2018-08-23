@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_calendario"
-            android:title="Agendar Horário" />
+            android:title="Agendar horário" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_buscararenas"

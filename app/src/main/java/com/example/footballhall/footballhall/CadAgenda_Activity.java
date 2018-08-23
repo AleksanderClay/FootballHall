@@ -1,6 +1,10 @@
 package com.example.footballhall.footballhall;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,12 +29,13 @@ import com.google.android.gms.common.api.Api;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class CadAgenda_Activity extends AppCompatActivity  {
+public class CadAgenda_Activity extends AppCompatActivity {
     private EditText editNome;
     private EditText editTel;
     private Spinner spinner_Arena;
     private EditText editData;
     private EditText editHora;
+    final Context context = this;
 
     Agenda objAgenda;
 
@@ -44,7 +49,31 @@ public class CadAgenda_Activity extends AppCompatActivity  {
         try {
             Cliente cliente = new ClienteDbHelper(this).ConsultarCliente();
             if (cliente.id == 0) {
-                startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
+                AlertDialog.Builder alertDialogBuilder = new
+                        AlertDialog.Builder(context);
+                alertDialogBuilder.setTitle("Usuário não cadastrado!");
+                alertDialogBuilder
+                        .setMessage("É preciso efetuar cadastro. \n Deseja se cadastrar agora?")
+                        .setCancelable(false)
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
+                            }
+                        })
+                        .setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                startActivity(new Intent(getBaseContext(), MainActivity.class));
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                startActivity(getIntent());
+
             } else {
                 editNome = (EditText) findViewById(R.id.editNome);
                 editTel = (EditText) findViewById(R.id.editTel);
@@ -58,11 +87,12 @@ public class CadAgenda_Activity extends AppCompatActivity  {
                 editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
                 editHora.setText(new SimpleDateFormat("hh:mm").format(objAgenda.getHora()));
 
-            }} catch(Exception e){
-                Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
-                Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
             }
+        } catch (Exception e) {
+            Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
+            Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
         }
+    }
 
 
     public void calendario(View view) {
@@ -84,7 +114,7 @@ public class CadAgenda_Activity extends AppCompatActivity  {
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
-        } catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
             Log.e("Agenda", e.getMessage());
         }
@@ -125,9 +155,11 @@ public class CadAgenda_Activity extends AppCompatActivity  {
             Log.e("Agenda", "Agendar: " + e.getMessage());
         }
     }
-        public void Cancelar(View view) {
-            startActivity(new Intent(getBaseContext(), MainActivity.class));
-        }
+
+    public void Cancelar(View view) {
+        startActivity(new Intent(getBaseContext(), MainActivity.class));
     }
+}
+
 
 
