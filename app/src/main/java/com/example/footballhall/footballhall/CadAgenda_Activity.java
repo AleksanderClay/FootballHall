@@ -72,7 +72,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                         alertDialog.show();
-                startActivity(getIntent());
+
 
             } else {
                 editNome = (EditText) findViewById(R.id.editNome);
