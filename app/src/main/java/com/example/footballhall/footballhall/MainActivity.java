@@ -86,12 +86,25 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
         } else if (id == R.id.nav_share) {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("text/plain");
+            share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+            share.putExtra(Intent.EXTRA_SUBJECT, "Aqui vai sua mensagem");
+            share.putExtra(Intent.EXTRA_TEXT, "Aqui vai mensagem ou link que deseja compartilhar");
+            startActivity(Intent.createChooser(share, "Compartilhar"));
 
         } else if (id == R.id.nav_send) {
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:Footballhall@gmail.com"));
             intent.putExtra(Intent.EXTRA_EMAIL, "Footballhall@gmail.com");
             intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+            if (intent.resolveActivity(getPackageManager()) != null){
+                startActivity(intent);
+            }
+        } else if (id == R.id.telefone){
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel: (91) 3222-5555"));
             if (intent.resolveActivity(getPackageManager()) != null){
                 startActivity(intent);
             }
