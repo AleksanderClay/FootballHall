@@ -1,6 +1,7 @@
 package com.example.footballhall.footballhall;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -87,7 +88,13 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:Footballhall@gmail.com"));
+            intent.putExtra(Intent.EXTRA_EMAIL, "Footballhall@gmail.com");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+            if (intent.resolveActivity(getPackageManager()) != null){
+                startActivity(intent);
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -95,4 +102,18 @@ public class MainActivity extends AppCompatActivity
         return true;
         
     }
+
+    public void QuadraVindi(View view) {
+        startActivity(new Intent(getBaseContext(),CadAgenda_Activity.class));
+    }
+
+    public void QuadraSabino(View view) {
+        startActivity(new Intent(getBaseContext(),CadAgenda_Activity.class));
+    }
+
+    public void QuadraSenac(View view) {
+        startActivity(new Intent(getBaseContext(),CadAgenda_Activity.class));
+    }
+
+
 }
