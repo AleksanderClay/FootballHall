@@ -83,7 +83,7 @@
             android:id="@+id/textData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="236dp"
+            android:layout_marginTop="228dp"
             android:text="Data"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
             app:layout_constraintHorizontal_bias="0.045"
@@ -92,14 +92,14 @@
 
         <EditText
             android:id="@+id/editData"
-            android:layout_width="178dp"
+            android:layout_width="157dp"
             android:layout_height="47dp"
             android:layout_marginTop="260dp"
             android:ems="10"
             android:inputType="date"
             android:onClick="calendario"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.077"
+            app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toStartOf="@+id/editNome"
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
@@ -107,20 +107,22 @@
             android:id="@+id/textHora"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="236dp"
+            android:layout_marginTop="228dp"
             android:text="Horário"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.636"
+            app:layout_constraintHorizontal_bias="0.568"
             app:layout_constraintStart_toStartOf="@+id/editNome"
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
-        <EditText
+        <Spinner
             android:id="@+id/editHora"
-            android:layout_width="161dp"
+            android:layout_width="177dp"
             android:layout_height="48dp"
             android:layout_marginTop="260dp"
             android:ems="10"
+            android:entries="@array/hours_arrays"
             android:inputType="time"
+            android:prompt="@string/hours_prompt"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
             app:layout_constraintHorizontal_bias="0.928"
             app:layout_constraintStart_toStartOf="@+id/editNome"

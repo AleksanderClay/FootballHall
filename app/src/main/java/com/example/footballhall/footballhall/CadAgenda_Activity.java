@@ -34,10 +34,10 @@ public class CadAgenda_Activity extends AppCompatActivity {
     private EditText editTel;
     private Spinner spinner_Arena;
     private EditText editData;
-    private EditText editHora;
+    private Spinner editHora;
     final Context context = this;
-
     Agenda objAgenda;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        try {
-            Cliente cliente = new ClienteDbHelper(this).ConsultarCliente();
+            final Cliente cliente = new ClienteDbHelper(this).ConsultarCliente();
             if (cliente.id == 0) {
                 AlertDialog.Builder alertDialogBuilder = new
                         AlertDialog.Builder(context);
@@ -59,44 +58,55 @@ public class CadAgenda_Activity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
+
+                                Cliente cli = new ClienteDbHelper(getBaseContext()).ConsultarCliente();
+                                if (cliente.id == 0) {
+                                    finish();
+                                }
                             }
                         })
                         .setNegativeButton("Não", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
-                                startActivity(new Intent(getBaseContext(), MainActivity.class));
                                 dialog.cancel();
                             }
                         });
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
-                        alertDialog.show();
-
+                alertDialog.show();
+                return;
 
             } else {
                 editNome = (EditText) findViewById(R.id.editNome);
                 editTel = (EditText) findViewById(R.id.editTel);
                 editData = (EditText) findViewById(R.id.editData);
-                editHora = (EditText) findViewById(R.id.editHora);
+                editHora = (Spinner) findViewById(R.id.editHora);
                 spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
 
                 editNome.setText(cliente.nome);
                 editTel.setText(cliente.telefone);
                 spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
                 editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
-                editHora.setText(new SimpleDateFormat("hh:mm").format(objAgenda.getHora()));
+                editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
             }
-        } catch (Exception e) {
-            Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
-            Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
-        }
+
+            editNome = (EditText) findViewById(R.id.editNome);
+            editTel = (EditText) findViewById(R.id.editTel);
+            editData = (EditText) findViewById(R.id.editData);
+            editHora = (Spinner) findViewById(R.id.editHora);
+            spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
+
+
+            editNome.setText(cliente.nome);
+            editTel.setText(cliente.telefone);
+            spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+            editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
+            editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
     }
 
-
     public void calendario(View view) {
-        try {
             final Calendar c = Calendar.getInstance();
             int mYear = c.get(Calendar.YEAR);
             int mMonth = c.get(Calendar.MONTH);
@@ -114,35 +124,23 @@ public class CadAgenda_Activity extends AppCompatActivity {
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
-        } catch (Exception e) {
-            Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
-            Log.e("Agenda", e.getMessage());
-        }
     }
 
-    public void Agendar(View view) {
+    public void Agendar(View view)  {
         try {
+
             if (editData.getText().toString().isEmpty()) {
                 editData.setError("Entre com uma data!");
 
                 return;
             }
-            if (editHora.getText().toString().isEmpty()) {
-                editHora.setError("Informe a hora desejada!");
 
-                return;
-            }
 
-            int id = 0;
-
-            if (objAgenda != null) {
-                id = objAgenda.getId();
-            }
             Agenda agenda = new Agenda(1,
                     1,
                     spinner_Arena.getOnItemSelectedListener().toString(),
                     new SimpleDateFormat("dd-MM-yyyy").parse(editData.getText().toString()),
-                    new SimpleDateFormat("hh:mm").parse(editHora.getText().toString())
+                    editHora.getOnItemSelectedListener().toString()
             );
 
             AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);
@@ -150,7 +148,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
             finish();
             Toast.makeText(this, "Agendamento Salvo com sucesso!", Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
+        } catch (Exception e){
             Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
             Log.e("Agenda", "Agendar: " + e.getMessage());
         }

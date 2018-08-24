@@ -43,7 +43,7 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
             values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_IDCLIENTE, agenda.getIdCliente());
             values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_ARENA, agenda.getArena());
             values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_DATA, new SimpleDateFormat("dd-MM-yyyy").format(agenda.getData()));
-            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_HORA, new SimpleDateFormat("HH:MM").format(agenda.getHora()));
+            values.put(ContratoAgenda.TabelaAgenda.COLUMN_NAME_HORA, agenda.getHora());
 
             String[] args = {Integer.toString(agenda.getId())};
 
@@ -90,7 +90,7 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
                         cursor.getInt(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_IDCLIENTE)),
                         cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_ARENA)),
                         new SimpleDateFormat("dd-MM-yyyy").parse(cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_DATA))),
-                        new SimpleDateFormat("HH:MM").parse(cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_HORA)))
+                        cursor.getString(cursor.getColumnIndex(ContratoAgenda.TabelaAgenda.COLUMN_NAME_HORA))
                 ));
             }
             cursor.close();
