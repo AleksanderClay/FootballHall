@@ -61,8 +61,4 @@ public class Agenda {
         this.hora = hora;
     }
 
-    @Override
-    public String toString() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(this.data);
-    }
 }

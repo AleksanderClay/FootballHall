@@ -11,14 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ArrayAdapter;
 
 import com.example.footballhall.footballhall.objetos.Agenda;
 import com.example.footballhall.footballhall.objetos.AgendaDbHelper;
@@ -45,7 +41,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_cad_agenda);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        try{
             final Cliente cliente = new ClienteDbHelper(this).ConsultarCliente();
             if (cliente.id == 0) {
                 AlertDialog.Builder alertDialogBuilder = new
@@ -59,7 +55,6 @@ public class CadAgenda_Activity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
 
-                                Cliente cli = new ClienteDbHelper(getBaseContext()).ConsultarCliente();
                                 if (cliente.id == 0) {
                                     finish();
                                 }
@@ -75,42 +70,45 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
-                return;
 
             } else {
-                editNome = (EditText) findViewById(R.id.editNome);
-                editTel = (EditText) findViewById(R.id.editTel);
-                editData = (EditText) findViewById(R.id.editData);
-                editHora = (Spinner) findViewById(R.id.editHora);
-                spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
+                editNome = findViewById(R.id.editNome);
+                editTel = findViewById(R.id.editTel);
+                editData = findViewById(R.id.editData);
+                editHora = findViewById(R.id.editHora);
+                spinner_Arena = findViewById(R.id.spinner_Arena);
+
 
                 editNome.setText(cliente.nome);
                 editTel.setText(cliente.telefone);
                 spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-                editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
                 editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
             }
 
-            editNome = (EditText) findViewById(R.id.editNome);
-            editTel = (EditText) findViewById(R.id.editTel);
-            editData = (EditText) findViewById(R.id.editData);
-            editHora = (Spinner) findViewById(R.id.editHora);
-            spinner_Arena = (Spinner) findViewById(R.id.spinner_Arena);
+            editNome = findViewById(R.id.editNome);
+            editTel = findViewById(R.id.editTel);
+            editData = findViewById(R.id.editData);
+            editHora = findViewById(R.id.editHora);
+            spinner_Arena = findViewById(R.id.spinner_Arena);
 
 
             editNome.setText(cliente.nome);
             editTel.setText(cliente.telefone);
             spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-            editData.setText(new SimpleDateFormat("dd-MM-yyyy").format(objAgenda.getData()));
             editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
+        } catch (Exception e){
+            Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
+            Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
+        }
     }
 
     public void calendario(View view) {
+        try{
             final Calendar c = Calendar.getInstance();
-            int mYear = c.get(Calendar.YEAR);
-            int mMonth = c.get(Calendar.MONTH);
-            int mDay = c.get(Calendar.DAY_OF_MONTH);
+            final int mYear = c.get(Calendar.YEAR);
+            final int mMonth = c.get(Calendar.MONTH);
+            final int mDay = c.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     new DatePickerDialog.OnDateSetListener() {
@@ -119,11 +117,15 @@ public class CadAgenda_Activity extends AppCompatActivity {
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            editData.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            editData.setText(new StringBuilder().append(mDay).append("-").append(mMonth + 1).append("-").append(mYear));
 
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
+        } catch (Exception e){
+            Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
+            Log.e("Agenda", e.getMessage());
+        }
     }
 
     public void Agendar(View view)  {
@@ -135,19 +137,22 @@ public class CadAgenda_Activity extends AppCompatActivity {
                 return;
             }
 
+            int id = 0;
 
             Agenda agenda = new Agenda(1,
                     1,
-                    spinner_Arena.getOnItemSelectedListener().toString(),
+                    String.valueOf(spinner_Arena.getSelectedItem()),
                     new SimpleDateFormat("dd-MM-yyyy").parse(editData.getText().toString()),
-                    editHora.getOnItemSelectedListener().toString()
+                    String.valueOf(editHora.getSelectedItem())
             );
 
-            AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);
+        AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);
             agendaDbHelper.Agendar(agenda);
 
-            finish();
+
             Toast.makeText(this, "Agendamento Salvo com sucesso!", Toast.LENGTH_LONG).show();
+            finish();
+
         } catch (Exception e){
             Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
             Log.e("Agenda", "Agendar: " + e.getMessage());
