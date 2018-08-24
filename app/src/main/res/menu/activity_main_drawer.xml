@@ -34,6 +34,14 @@
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Contato" />
+
+            <item
+                android:icon="@drawable/ic_settings_phone_black_24dp"
+                android:title="Tel: 3222-5555" />
+
+            <item
+                android:icon="@drawable/ic_email_black_24dp"
+                android:title="Email:Footballhall@gmail.com" />
         </menu>
     </item>
 
