@@ -1,6 +1,7 @@
 package com.example.footballhall.footballhall.objetos;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Agenda {
@@ -9,9 +10,9 @@ public class Agenda {
     public int idCliente;
     public String arena;
     public Date data;
-    public Date hora;
+    public String hora;
 
-    public Agenda(int id, int idCliente, String arena, Date data, Date hora) {
+    public Agenda(int id, int idCliente, String arena, Date data, String hora) {
         this.id = id;
         this.idCliente = idCliente;
         this.arena = arena;
@@ -52,11 +53,16 @@ public class Agenda {
         this.data = data;
     }
 
-    public Date getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(String hora) {
         this.hora = hora;
+    }
+
+    @Override
+    public String toString() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(this.data);
     }
 }
