@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.footballhall.footballhall.objetos.Cliente;
 import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
@@ -42,6 +43,7 @@ public class CadCliente_Activity extends AppCompatActivity {
             edtEmail.setText(cliente.email);
             edtTelefone.setText(cliente.telefone);
         }
+
     }
 
 
@@ -57,6 +59,8 @@ public class CadCliente_Activity extends AppCompatActivity {
 
         ClienteDbHelper clienteDbHelper = new ClienteDbHelper(this);
         clienteDbHelper.Salvar(cliente);
+
+        Toast.makeText(this, "Dados Salvos Com Sucesso!",Toast.LENGTH_LONG).show();
 
         finish();
 
