@@ -139,7 +139,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
             int id = 0;
 
-            Agenda agenda = new Agenda(1,
+            Agenda agenda = new Agenda(id,
                     1,
                     String.valueOf(spinner_Arena.getSelectedItem()),
                     new SimpleDateFormat("dd-MM-yyyy").parse(editData.getText().toString()),
