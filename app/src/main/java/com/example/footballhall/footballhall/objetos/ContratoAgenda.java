@@ -9,8 +9,8 @@ public class ContratoAgenda {
                     TabelaAgenda._ID + " INTEGER PRIMARY KEY," +
                     TabelaAgenda.COLUMN_NAME_IDCLIENTE + " INTEGER," +
                     TabelaAgenda.COLUMN_NAME_ARENA + " TEXT," +
-                    TabelaAgenda.COLUMN_NAME_DATA + " TEXT)" +
-                    TabelaAgenda.COLUMN_NAME_HORA + " TEXT)";;
+                    TabelaAgenda.COLUMN_NAME_DATA + " TEXT," +
+                    TabelaAgenda.COLUMN_NAME_HORA + " TEXT)";
 
     public static final String SQL_DELETE_AGENDA =
             "DROP TABLE IF EXISTS " + TabelaAgenda.TABLE_NAME;

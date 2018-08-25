@@ -24,7 +24,7 @@
             android:title="Meus Dados" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Comunicação">
         <menu>
             <item
                 android:id="@+id/nav_share"
@@ -33,12 +33,12 @@
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_email_black_24dp"
-                android:title="Contato" />
+                android:title="Email" />
 
             <item
                 android:id="@+id/telefone"
                 android:icon="@drawable/ic_settings_phone_black_24dp"
-                android:title="Tel: 3222-5555" />
+                android:title="Telefone" />
         </menu>
     </item>
 
