@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:background="@drawable/backgroundfutebolhallcampo"
+    android:id="@+id/imagelogo"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".CadAgenda_Activity"
     tools:showIn="@layout/activity_cad_agenda">
@@ -13,76 +15,9 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textNome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Nome"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editNome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:enabled="false"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="@+id/textNome"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textNome"
-            app:layout_constraintTop_toTopOf="@+id/textNome" />
-
-        <TextView
-            android:id="@+id/textTel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:text="Telefone"
-            app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editNome"
-            app:layout_constraintTop_toTopOf="@+id/editNome" />
-
-        <EditText
-            android:id="@+id/editTel"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:enabled="false"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="@+id/textTel"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTel"
-            app:layout_constraintTop_toTopOf="@+id/textTel" />
-
-        <TextView
-            android:id="@+id/textArena"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="68dp"
-            android:text="Selecionar Arena:"
-            app:layout_constraintEnd_toEndOf="@+id/editTel"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editTel"
-            app:layout_constraintTop_toTopOf="@+id/editTel" />
-
-        <Spinner
-            android:id="@+id/spinner_Arena"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="188dp"
-            android:entries="@array/country_arrays"
-            android:prompt="@string/country_prompt"
-            app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintStart_toStartOf="@+id/editNome"
-            app:layout_constraintTop_toTopOf="@+id/editNome" />
-
-        <TextView
             android:id="@+id/textData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="44dp"
+            android:layout_height="18dp"
             android:layout_marginTop="228dp"
             android:text="Data"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
@@ -91,32 +26,45 @@
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
         <EditText
-            android:id="@+id/editData"
-            android:layout_width="157dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="260dp"
+            android:id="@+id/editTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
             android:ems="10"
-            android:inputType="date"
-            android:onClick="calendario"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="@+id/textTel"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textTel"
+            app:layout_constraintTop_toTopOf="@+id/textTel" />
+
+        <TextView
+            android:id="@+id/textTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="Telefone"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/editNome"
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
-        <TextView
-            android:id="@+id/textHora"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/button_Agendar"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="228dp"
-            android:text="Horário"
+            android:layout_marginTop="324dp"
+            android:onClick="Agendar"
+            android:text="Agendar"
+            android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.568"
+            app:layout_constraintHorizontal_bias="0.195"
             app:layout_constraintStart_toStartOf="@+id/editNome"
-            app:layout_constraintTop_toTopOf="@+id/editNome" />
+            app:layout_constraintTop_toTopOf="@+id/editNome"
+            tools:background="@android:color/holo_green_dark" />
 
         <Spinner
             android:id="@+id/editHora"
-            android:layout_width="177dp"
+            android:layout_width="170dp"
             android:layout_height="48dp"
             android:layout_marginTop="260dp"
             android:ems="10"
@@ -128,29 +76,87 @@
             app:layout_constraintStart_toStartOf="@+id/editNome"
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
-        <Button
-            android:id="@+id/button_Agendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="324dp"
-            android:text="Agendar"
-            android:onClick="Agendar"
+        <TextView
+            android:id="@+id/textHora"
+            android:layout_width="76dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="228dp"
+            android:text="Horário"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintHorizontal_bias="0.646"
             app:layout_constraintStart_toStartOf="@+id/editNome"
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
         <Button
             android:id="@+id/button_Cancelar"
-            android:layout_width="wrap_content"
+            android:layout_width="117dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="324dp"
-            android:text="Cancelar"
             android:onClick="Cancelar"
+            android:text="Cancelar"
+            android:textColor="@android:color/background_light"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
             app:layout_constraintHorizontal_bias="0.816"
+            app:layout_constraintStart_toStartOf="@+id/editNome"
+            app:layout_constraintTop_toTopOf="@+id/editNome"
+            tools:background="@android:color/holo_green_dark" />
+
+        <TextView
+            android:id="@+id/textArena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            android:text="Selecionar Arena:"
+            app:layout_constraintEnd_toEndOf="@+id/editTel"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editTel"
+            app:layout_constraintTop_toTopOf="@+id/editTel" />
+
+        <EditText
+            android:id="@+id/editNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:ems="10"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="@+id/textNome"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textNome"
+            app:layout_constraintTop_toTopOf="@+id/textNome" />
+
+        <Spinner
+            android:id="@+id/spinner_Arena"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="188dp"
+            android:entries="@array/country_arrays"
+            android:prompt="@string/country_prompt"
+            app:layout_constraintEnd_toEndOf="@+id/editNome"
+            app:layout_constraintStart_toStartOf="@+id/editNome"
+            app:layout_constraintTop_toTopOf="@+id/editNome" />
+
+        <TextView
+            android:id="@+id/textNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Nome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editData"
+            android:layout_width="153dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="260dp"
+            android:ems="10"
+            android:inputType="date"
+            android:onClick="calendario"
+            app:layout_constraintEnd_toEndOf="@+id/editNome"
+            app:layout_constraintHorizontal_bias="0.07"
             app:layout_constraintStart_toStartOf="@+id/editNome"
             app:layout_constraintTop_toTopOf="@+id/editNome" />
 
     </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+</ScrollView>

@@ -117,15 +117,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void QuadraVindi(View view) {
-        startActivity(new Intent(getBaseContext(),CadAgenda_Activity.class));
+        startActivity(new Intent(getBaseContext(),QuadraVindi_Activity.class));
     }
 
     public void QuadraSabino(View view) {
-        startActivity(new Intent(getBaseContext(),CadAgenda_Activity.class));
+        startActivity(new Intent(getBaseContext(),QuadraSabino_Activity.class));
     }
 
     public void QuadraSenac(View view) {
-        startActivity(new Intent(getBaseContext(),CadAgenda_Activity.class));
+        startActivity(new Intent(getBaseContext(),QuadraSenac_Activity.class));
     }
 
 

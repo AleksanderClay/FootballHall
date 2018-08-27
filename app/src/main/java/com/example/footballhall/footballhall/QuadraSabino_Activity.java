@@ -2,6 +2,31 @@ package com.example.footballhall.footballhall;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.footballhall.footballhall.objetos.Agenda;
+import com.example.footballhall.footballhall.objetos.AgendaDbHelper;
+import com.example.footballhall.footballhall.objetos.Cliente;
+import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,12 +45,12 @@ import com.example.footballhall.footballhall.objetos.Agenda;
 import com.example.footballhall.footballhall.objetos.AgendaDbHelper;
 import com.example.footballhall.footballhall.objetos.Cliente;
 import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
-import com.google.android.gms.common.api.Api;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
-public class CadAgenda_Activity extends AppCompatActivity {
+public class QuadraSabino_Activity extends AppCompatActivity {
     private EditText editNome;
     private EditText editTel;
     private Spinner spinner_Arena;
@@ -76,11 +101,10 @@ public class CadAgenda_Activity extends AppCompatActivity {
                 editHora = findViewById(R.id.editHora);
                 spinner_Arena = findViewById(R.id.spinner_Arena);
 
-
                 editNome.setText(cliente.nome);
                 editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
                 editTel.setText(cliente.telefone);
-                spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+                addItemsOnSpinnerSabino();
                 editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
             }
@@ -95,12 +119,20 @@ public class CadAgenda_Activity extends AppCompatActivity {
             editNome.setText(cliente.nome);
             editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
             editTel.setText(cliente.telefone);
-            spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+            addItemsOnSpinnerSabino();
             editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
         } catch (Exception e){
             Toast.makeText(this, "Ocorreu um erro...", Toast.LENGTH_LONG).show();
             Log.e("Agenda", "Erro OnCreate, " + e.getMessage());
         }
+    }
+
+    private void addItemsOnSpinnerSabino() {
+        List list = new ArrayList();
+        list.add("Quadra Sabino");
+        ArrayAdapter listaAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,list);
+        listaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_Arena.setAdapter(listaAdapter);
     }
 
     public void calendario(View view) {
@@ -146,7 +178,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
                     String.valueOf(editHora.getSelectedItem())
             );
 
-        AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);
+            AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);
             agendaDbHelper.Agendar(agenda);
 
 
@@ -163,6 +195,3 @@ public class CadAgenda_Activity extends AppCompatActivity {
         startActivity(new Intent(getBaseContext(), MainActivity.class));
     }
 }
-
-
-
