@@ -48,7 +48,7 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
             String[] args = {Integer.toString(agenda.getId())};
 
             if (agenda.getId() > 0) {
-                return db.update(ContratoAgenda.TabelaAgenda.TABLE_NAME, values, "_id = ?", args) > 0;
+                return db.update(ContratoAgenda.TabelaAgenda.TABLE_NAME, values, "id = ?", args) > 0;
             } else {
                 return db.insert(ContratoAgenda.TabelaAgenda.TABLE_NAME, null, values) > 0;
             }

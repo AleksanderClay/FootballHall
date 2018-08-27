@@ -64,9 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .position(new LatLng(-1.4641926, -48.5005281)).title("Sabino Futebol Society")
                 .icon(bitmapDescriptorFromVector(this, R.drawable.ic_menu_quadras)));
 
-        mMap.setOnInfoWindowClickListener((GoogleMap.OnInfoWindowClickListener) this);
-
-
+        
         /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
