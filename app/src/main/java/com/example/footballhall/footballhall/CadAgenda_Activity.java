@@ -2,7 +2,6 @@ package com.example.footballhall.footballhall;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,7 +19,6 @@ import com.example.footballhall.footballhall.objetos.Agenda;
 import com.example.footballhall.footballhall.objetos.AgendaDbHelper;
 import com.example.footballhall.footballhall.objetos.Cliente;
 import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
-import com.google.android.gms.common.api.Api;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -78,7 +76,6 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
 
                 editNome.setText(cliente.nome);
-                editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
                 editTel.setText(cliente.telefone);
                 spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
                 editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
@@ -93,7 +90,6 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
 
             editNome.setText(cliente.nome);
-            editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
             editTel.setText(cliente.telefone);
             spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
             editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
@@ -143,7 +139,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
                     1,
                     String.valueOf(spinner_Arena.getSelectedItem()),
                     new SimpleDateFormat("dd-MM-yyyy").parse(editData.getText().toString()),
-                    String.valueOf(editHora.getSelectedItem())
+                    String.valueOf(editHora.getSelectedItem()).toString()
             );
 
         AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);

@@ -41,7 +41,6 @@ public class CadCliente_Activity extends AppCompatActivity {
             edtNome.setText(cliente.nome);
             edtEndereco.setText(cliente.endereco);
             edtEmail.setText(cliente.email);
-            edtTelefone.addTextChangedListener(MaskEditUtil.mask(edtTelefone, MaskEditUtil.FORMAT_FONE));
             edtTelefone.setText(cliente.telefone);
         }
 
