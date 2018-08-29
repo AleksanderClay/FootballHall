@@ -77,6 +77,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
                 editNome.setText(cliente.nome);
                 editTel.setText(cliente.telefone);
+                editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
                 spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
                 editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
@@ -91,6 +92,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
 
             editNome.setText(cliente.nome);
             editTel.setText(cliente.telefone);
+            editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
             spinner_Arena.setOnItemSelectedListener(new CustomOnItemSelectedListener());
             editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
         } catch (Exception e){
