@@ -103,6 +103,7 @@ public class QuadraSenac_Activity extends AppCompatActivity {
 
                 editNome.setText(cliente.nome);
                 editTel.setText(cliente.telefone);
+                editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
                 addItemsOnSpinnerSenac();
                 editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
@@ -117,6 +118,7 @@ public class QuadraSenac_Activity extends AppCompatActivity {
 
             editNome.setText(cliente.nome);
             editTel.setText(cliente.telefone);
+            editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
             addItemsOnSpinnerSenac();
             editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
         } catch (Exception e){
