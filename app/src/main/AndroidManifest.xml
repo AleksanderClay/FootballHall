@@ -8,6 +8,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -19,9 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,13 +50,51 @@
                 android:value="com.example.footballhall.footballhall.MainActivity" />
         </activity>
         <activity
+            android:name=".CadAgenda_Activity"
+            android:label="Agendar horário"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.footballhall.footballhall.MainActivity" />
+        </activity>
+        <activity
+            android:name=".QuadraVindi_Activity"
+            android:label="Agendar horário"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.footballhall.footballhall.MainActivity" />
+        </activity>
+        <activity
+            android:name=".QuadraSenac_Activity"
+            android:label="Agendar horário"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.footballhall.footballhall.MainActivity" />
+        </activity>
+        <activity
+            android:name=".QuadraSabino_Activity"
+            android:label="Agendar horário"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.footballhall.footballhall.MainActivity" />
+        </activity>
+        <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/AppCompat.TelaCheia">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".lista_personalizada"></activity>
     </application>
 
 </manifest>

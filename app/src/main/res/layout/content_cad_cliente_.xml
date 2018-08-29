@@ -88,6 +88,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone"
+            android:hint="(99)99999-9999"
             app:layout_constraintEnd_toEndOf="@+id/txtTelefone"
             app:layout_constraintStart_toStartOf="@+id/txtTelefone"
             app:layout_constraintTop_toBottomOf="@+id/txtTelefone" />

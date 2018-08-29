@@ -71,6 +71,31 @@ public class ClienteDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Cliente ConsultarCliente() {
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            Cursor cursor = db.query(ContratoCliente.TabelaCliente.TABLE_NAME, null, null, null, null, null, null);
+
+            Cliente cli = new Cliente();
+            while (cursor.moveToNext()) {
+                cli = new Cliente(
+                        cursor.getInt(cursor.getColumnIndex(ContratoCliente.TabelaCliente._ID)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_NOME)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_ENDERECO)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_EMAIL)),
+                        cursor.getString(cursor.getColumnIndex(ContratoCliente.TabelaCliente.COLUMN_NAME_TELEFONE))
+                );
+            }
+            cursor.close();
+
+            return cli;
+        } catch (Exception e){
+            Log.e("ContratoCliente", e.getMessage());
+            return null;
+        }
+    }
+
     public List<Cliente> Consultar(String ordem) {
         try {
             SQLiteDatabase db = this.getReadableDatabase();

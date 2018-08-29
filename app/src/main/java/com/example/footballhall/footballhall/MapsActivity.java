@@ -10,6 +10,7 @@ import android.support.annotation.DrawableRes;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -54,16 +55,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng belem = new LatLng(-1.4615468, -48.4920082);
 
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(-1.4587243,-48.4927956)).title("Quadra SENAC")
+                .position(new LatLng(-1.4587243, -48.4927956)).title("Quadra SENAC")
                 .icon(bitmapDescriptorFromVector(this, R.drawable.ic_menu_quadras)));
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(-1.4616159,-48.5048073)).title("Arena Vindi")
+                .position(new LatLng(-1.4616159, -48.5048073)).title("Arena Vindi")
                 .icon(bitmapDescriptorFromVector(this, R.drawable.ic_menu_quadras)));
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(-1.4641926,-48.5005281)).title("Sabino Futebol Society")
+                .position(new LatLng(-1.4641926, -48.5005281)).title("Sabino Futebol Society")
                 .icon(bitmapDescriptorFromVector(this, R.drawable.ic_menu_quadras)));
 
-
+        
         /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -86,7 +87,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(belem, 14.5f));
     }
+ /*    public void onInfoWindowClick(Marker marker) {
+        Toast.makeText(this, "Info window clicked",
+                Toast.LENGTH_SHORT).show();
 
+    }*/
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, @DrawableRes int vectorDrawableResourceId) {
         Drawable background = ContextCompat.getDrawable(context, vectorDrawableResourceId);
         background.setBounds(0, 0, background.getIntrinsicWidth(), background.getIntrinsicHeight());

@@ -1,6 +1,7 @@
 package com.example.footballhall.footballhall;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.footballhall.footballhall.objetos.Agenda;
+import com.example.footballhall.footballhall.objetos.Cliente;
+import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,14 +28,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -60,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
+/*    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -74,7 +69,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -83,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            startActivity(new Intent(getBaseContext(), CadAgenda_Activity.class));
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(getBaseContext(), MapsActivity.class));
         //} else if (id == R.id.nav_slideshow) {
@@ -91,9 +86,28 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             startActivity(new Intent(getBaseContext(), CadCliente_Activity.class));
         } else if (id == R.id.nav_share) {
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("text/plain");
+            share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+
+            share.putExtra(Intent.EXTRA_SUBJECT, "Aqui vai sua mensagem");
+            share.putExtra(Intent.EXTRA_TEXT, "Aqui vai mensagem ou link que deseja compartilhar");
+            startActivity(Intent.createChooser(share, "Compartilhar"));
 
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:Footballhall@gmail.com"));
+            intent.putExtra(Intent.EXTRA_EMAIL, "Footballhall@gmail.com");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+            if (intent.resolveActivity(getPackageManager()) != null){
+                startActivity(intent);
+            }
+        } else if (id == R.id.telefone){
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel: (91) 3222-5555"));
+            if (intent.resolveActivity(getPackageManager()) != null){
+                startActivity(intent);
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -101,4 +115,18 @@ public class MainActivity extends AppCompatActivity
         return true;
         
     }
+
+    public void QuadraVindi(View view) {
+        startActivity(new Intent(getBaseContext(),QuadraVindi_Activity.class));
+    }
+
+    public void QuadraSabino(View view) {
+        startActivity(new Intent(getBaseContext(),QuadraSabino_Activity.class));
+    }
+
+    public void QuadraSenac(View view) {
+        startActivity(new Intent(getBaseContext(),QuadraSenac_Activity.class));
+    }
+
+
 }

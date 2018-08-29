@@ -1,24 +1,25 @@
 package com.example.footballhall.footballhall.objetos;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Agenda {
 
     public int id;
     public int idCliente;
-    public int quantidadeQuadras;
-    public Date diaHorario;
+    public String arena;
+    public Date data;
+    public String hora;
 
-    public Agenda() {
-    }
-
-    public Agenda(int id, int idCliente, int quantidadeQuadras, Date diaHorario) {
+    public Agenda(int id, int idCliente, String arena, Date data, String hora) {
         this.id = id;
         this.idCliente = idCliente;
-        this.quantidadeQuadras = quantidadeQuadras;
-        this.diaHorario = diaHorario;
+        this.arena = arena;
+        this.data = data;
+        this.hora = hora;
     }
+
 
     public int getId() {
         return id;
@@ -36,19 +37,28 @@ public class Agenda {
         this.idCliente = idCliente;
     }
 
-    public int getQuantidadeQuadras() {
-        return quantidadeQuadras;
+    public String getArena() {
+        return arena;
     }
 
-    public void setQuantidadeQuadras(int quantidadeQuadras) {
-        this.quantidadeQuadras = quantidadeQuadras;
+    public void setArena(String arena) {
+        this.arena = arena;
     }
 
-    public Date getDiaHorario() {
-        return diaHorario;
+    public Date getData() {
+        return data;
     }
 
-    public void setDiaHorario(Date diaHorario) {
-        this.diaHorario = diaHorario;
+    public void setData(Date data) {
+        this.data = data;
     }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
 }

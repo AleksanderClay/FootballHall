@@ -10,6 +10,10 @@ public class Cliente {
     public String email;
     public String telefone;
 
+    public Cliente(){
+
+    }
+
     public Cliente(int id, String nome, String endereco, String email,String telefone) {
         this.id = id;
         this.nome = nome;

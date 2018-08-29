@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.footballhall.footballhall.objetos.Cliente;
 import com.example.footballhall.footballhall.objetos.ClienteDbHelper;
+
+import java.util.List;
 
 public class CadCliente_Activity extends AppCompatActivity {
 
@@ -26,10 +30,19 @@ public class CadCliente_Activity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Cliente cliente = new ClienteDbHelper(this).ConsultarCliente();
+
         edtNome     = (EditText)findViewById(R.id.edtNome);
         edtEndereco = (EditText)findViewById(R.id.edtEndereco);
         edtEmail    = (EditText)findViewById(R.id.edtEmail);
         edtTelefone = (EditText)findViewById(R.id.edtTelefone);
+
+        if (cliente.id > 0) {
+            edtNome.setText(cliente.nome);
+            edtEndereco.setText(cliente.endereco);
+            edtEmail.setText(cliente.email);
+            edtTelefone.setText(cliente.telefone);
+        }
 
     }
 
@@ -47,7 +60,10 @@ public class CadCliente_Activity extends AppCompatActivity {
         ClienteDbHelper clienteDbHelper = new ClienteDbHelper(this);
         clienteDbHelper.Salvar(cliente);
 
+        Toast.makeText(this, "Dados Salvos Com Sucesso!",Toast.LENGTH_LONG).show();
+
         finish();
 
     }
-}
+
+  }
