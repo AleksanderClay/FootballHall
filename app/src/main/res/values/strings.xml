@@ -105,7 +105,32 @@
     <string name="title_menu_ok">Ok</string>
     <string name="title_menu_cancelar">Cancelar</string>
     <string name="action_ok">OK</string>
-    <string name="edtNome">Nome</string>
-    <string name="edtNome">Nome</string>
-    <string name="editNome" />
+
+    <string name="country_prompt">Selecionar Arena</string>
+
+    <string-array name="country_arrays">
+        <item>Quadra SENAC</item>
+        <item>Arena Vindi</item>
+        <item>Sabino Futebol Society</item>
+    </string-array>
+
+    <string name="hours_prompt">Selecionar Horário</string>
+
+    <string-array name="hours_arrays">
+        <item>08:00 às 09:00</item>
+        <item>09:00 às 10:00</item>
+        <item>10:00 às 11:00</item>
+        <item>11:00 às 12:00</item>
+        <item>12:00 às 13:00</item>
+        <item>13:00 às 14:00</item>
+        <item>14:00 às 15:00</item>
+        <item>15:00 às 16:00</item>
+        <item>16:00 às 17:00</item>
+        <item>17:00 às 18:00</item>
+        <item>18:00 às 19:00</item>
+        <item>19:00 às 20:00</item>
+        <item>20:00 às 21:00</item>
+        <item>21:00 às 22:00</item>
+        <item>22:00 às 23:00</item>
+    </string-array>
 </resources>
