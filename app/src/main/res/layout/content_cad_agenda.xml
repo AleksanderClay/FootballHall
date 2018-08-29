@@ -52,15 +52,15 @@
             android:id="@+id/button_Agendar"
             android:layout_width="128dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="324dp"
+            android:layout_marginTop="328dp"
             android:onClick="Agendar"
             android:text="Agendar"
             android:textColor="@android:color/background_light"
+            android:background="@android:color/holo_green_dark"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintStart_toStartOf="@+id/editNome"
-            app:layout_constraintTop_toTopOf="@+id/editNome"
-            tools:background="@android:color/holo_green_dark" />
+            app:layout_constraintTop_toTopOf="@+id/editNome" />
 
         <Spinner
             android:id="@+id/editHora"
@@ -91,15 +91,15 @@
             android:id="@+id/button_Cancelar"
             android:layout_width="117dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="324dp"
+            android:layout_marginTop="328dp"
             android:onClick="Cancelar"
             android:text="Cancelar"
             android:textColor="@android:color/background_light"
+            android:background="@android:color/holo_green_dark"
             app:layout_constraintEnd_toEndOf="@+id/editNome"
-            app:layout_constraintHorizontal_bias="0.816"
+            app:layout_constraintHorizontal_bias="0.823"
             app:layout_constraintStart_toStartOf="@+id/editNome"
-            app:layout_constraintTop_toTopOf="@+id/editNome"
-            tools:background="@android:color/holo_green_dark" />
+            app:layout_constraintTop_toTopOf="@+id/editNome"/>
 
         <TextView
             android:id="@+id/textArena"

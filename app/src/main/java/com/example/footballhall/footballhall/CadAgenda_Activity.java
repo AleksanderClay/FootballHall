@@ -139,7 +139,7 @@ public class CadAgenda_Activity extends AppCompatActivity {
                     1,
                     String.valueOf(spinner_Arena.getSelectedItem()),
                     new SimpleDateFormat("dd-MM-yyyy").parse(editData.getText().toString()),
-                    String.valueOf(editHora.getSelectedItem()).toString()
+                    String.valueOf(editHora.getSelectedItem())
             );
 
         AgendaDbHelper agendaDbHelper = new AgendaDbHelper(this);

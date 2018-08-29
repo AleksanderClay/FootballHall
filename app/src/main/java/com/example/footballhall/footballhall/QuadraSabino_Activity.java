@@ -102,7 +102,6 @@ public class QuadraSabino_Activity extends AppCompatActivity {
                 spinner_Arena = findViewById(R.id.spinner_Arena);
 
                 editNome.setText(cliente.nome);
-                editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
                 editTel.setText(cliente.telefone);
                 addItemsOnSpinnerSabino();
                 editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());
@@ -117,7 +116,6 @@ public class QuadraSabino_Activity extends AppCompatActivity {
 
 
             editNome.setText(cliente.nome);
-            editTel.addTextChangedListener(MaskEditUtil.mask(editTel, MaskEditUtil.FORMAT_FONE));
             editTel.setText(cliente.telefone);
             addItemsOnSpinnerSabino();
             editHora.setOnItemSelectedListener(new CustomOnItemSelectedListener());;
