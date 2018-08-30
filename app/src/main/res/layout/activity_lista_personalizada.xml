@@ -21,15 +21,15 @@
             android:id="@+id/txtDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descricao"
+            android:text="Arena Vindi - Marcado"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/txtValor"
+            android:id="@+id/txtData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="R$ 240,00"
-            android:textSize="36sp" />
+            android:text="01/09/18 - 08:00"
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>

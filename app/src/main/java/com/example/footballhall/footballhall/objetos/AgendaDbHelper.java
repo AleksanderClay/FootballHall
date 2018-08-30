@@ -14,7 +14,7 @@ import java.util.List;
 public class AgendaDbHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "footballhall.db";
+    public static final String DATABASE_NAME = "footballhall_ag.db";
 
     public AgendaDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -81,7 +81,7 @@ public class AgendaDbHelper extends SQLiteOpenHelper {
                     break;
             }
 
-            Cursor cursor = db.query(ContratoAgenda.TabelaAgenda.TABLE_NAME, null, null, null, null, null, ordem);
+            Cursor cursor = db.query(ContratoAgenda.TabelaAgenda.TABLE_NAME, null, null, null, null, null, null);
 
             List<Agenda> agendas = new ArrayList<>();
             while (cursor.moveToNext()) {

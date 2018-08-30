@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            startActivity(new Intent(getBaseContext(), CadAgenda_Activity.class));
+            startActivity(new Intent(getBaseContext(), AgendamentoActivity.class));
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(getBaseContext(), MapsActivity.class));
         //} else if (id == R.id.nav_slideshow) {

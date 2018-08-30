@@ -133,4 +133,5 @@
         <item>21:00 às 22:00</item>
         <item>22:00 às 23:00</item>
     </string-array>
+    <string name="title_activity_agendamento">Meus Agendamentos</string>
 </resources>
